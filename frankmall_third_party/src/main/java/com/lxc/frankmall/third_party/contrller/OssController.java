@@ -36,8 +36,7 @@ public class OssController {
     /**
      * alibaba:
      *   cloud:
-     *     access-key: LTAI5tJKPAvt1YWrkSuYfTvB
-     *     secret-key: kDRWOgpc1ip3Usi40npP5fFYnbbY4B
+     *
      *     oss:
      *       endpoint: oss-cn-hangzhou.aliyuncs.com
      * @return

@@ -3,8 +3,8 @@ server:
 
 alibaba:
   cloud:
-    access-key: LTAI5tJKPAvt1YWrkSuYfTvB
-    secret-key: kDRWOgpc1ip3Usi40npP5fFYnbbY4B
+    access-key: LINXCLTAI5tJKPAvt1YWrkSuYfTvB
+    secret-key: kDRWOgpc1ip3Usi40npP5fFYnbbY4BLINXC
     oss:
       endpoint: oss-cn-hangzhou.aliyuncs.com
 spring:
