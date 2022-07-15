@@ -1,0 +1,80 @@
+server:
+  port: 88
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product_route
+          uri: lb://frankMall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: coupon_route
+          uri: lb://frankMall-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: member_route
+          uri: lb://frankMall-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+
+        - id: ware_route
+          uri: lb://frankMall-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+
+
+        - id: third-party-route
+          uri: lb://frankMall-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/?(?<segment>.*), /$\{segment}
+
+
+        - id: admin-route
+          uri: lb://frankMall-renrenfast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+
+        - id: gulimall-search-route
+          uri: lb://frankMall-search
+          predicates:
+            - Host=search.gulimall.com
+
+        - id: gulimall-host-route
+          uri: lb://frankMall-product
+          predicates:
+            - Host=gulimall.com,item.gulimall.com
+
+        - id: gulimall-auth-route
+          uri: lb://frankMall-auth-server
+          predicates:
+            - Host=auth.gulimall.com
+
+        - id: gulimall-cart
+          uri: lb://frankMall-cart
+          predicates:
+            - Host=cart.gulimall.com
+        - id: gulimall-cart
+          uri: lb://frankMall-order
+          predicates:
+            - Host=order.gulimall.com
+
+        - id: gulimall-seckill
+          uri: lb://frankMall-seckill
+          predicates:
+            - Host=seckill.gulimall.com
+
+
+

@@ -1,0 +1,13 @@
+package com.lxc.frankmall.gateway;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class FrankMallGatewayApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}

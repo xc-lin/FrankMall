@@ -1,0 +1,64 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/gulimall_oms
+    username: root
+    password: 11111111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        # server-addr: localhost:8848
+        # 换成nginx的8080端口 做集群
+        namespace: f9ce362e-d3de-4d52-aadb-91ece67be28c
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: 8081
+        port: 8719
+  application:
+    name: frankMall-order
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    username: guest
+    password: guest
+    # 发布确认模式，消息到达交换机就会发送确认消息
+    publisher-confirm-type: correlated
+    # 开启发送断消息抵达队列的确认
+    publisher-returns: true
+    # 只要抵达队列，以异步发送优先回调我们这个returncallback
+    template:
+      mandatory: true
+    # 手动确认消息
+    listener:
+      simple:
+        acknowledge-mode: manual
+  redis:
+    host: 127.0.0.1
+    #    password: 11111111
+    port: 6379
+  session:
+    store-type: redis
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+
+server:
+  port: 9000
+
+frankmall:
+  thread:
+    core-size: 40
+    max-size: 100
+    keep-alive-time: 10
+
+feign:
+  httpclient:
+    connection-timeout: 5000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

@@ -1,0 +1,19 @@
+server:
+  port: 30000
+
+alibaba:
+  cloud:
+    access-key: LTAI5tJKPAvt1YWrkSuYfTvB
+    secret-key: kDRWOgpc1ip3Usi40npP5fFYnbbY4B
+    oss:
+      endpoint: oss-cn-hangzhou.aliyuncs.com
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  application:
+    name: frankmall-third-party
+
+sms:
+  appcode: 78c1a228c4564be68185048208427bd5
+  host: http://dingxin.market.alicloudapi.com

@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
  */
 public class Testd {
     @Test
-    public void a(){
+     public void a(){
         Object k = true?new Integer(1):new Double(2.0);
         System.out.println(k.getClass());
+        System.out.println(k);
     }
 }

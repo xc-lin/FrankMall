@@ -1,0 +1,48 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        # server-addr: localhost:8848
+        # 换成nginx的8080端口 做集群
+        server-addr: localhost:8848
+        namespace: f9ce362e-d3de-4d52-aadb-91ece67be28c
+    sentinel:
+      transport:
+        dashboard: localhost:8081
+        port: 8719
+  application:
+    name: frankMall-seckill
+  session:
+    store-type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  task:
+    execution:
+      pool:
+        core-size: 20
+        max-size: 50
+        queue-capacity: 100
+  rabbitmq:
+    host: 127.0.0.1
+    virtual-host: /
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+
+
+server:
+  port: 25000
+  servlet:
+    session:
+      timeout: 30m
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    org.springframework.cloud.sleuth: debug
+    org.springframework.cloud.openfeign: debug

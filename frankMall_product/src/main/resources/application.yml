@@ -1,0 +1,50 @@
+server:
+  port: 10000
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+
+logging:
+  level:
+    com.lxc.frankmall.product.dao: debug
+    org.springframework.cloud.sleuth: debug
+    org.springframework.cloud.openfeign: debug
+
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+spring:
+  thymeleaf:
+    cache: false
+  redis:
+    host: 127.0.0.1
+#    password: 11111111
+    port: 6379
+  session:
+    store-type: redis
+  cache:
+    type: redis
+    redis:
+      time-to-live: 6000000
+      # 如果指定了前缀，就使用前缀，如果没有就使用缓存名字作为前缀
+#      key-prefix: cache_
+      # 就没有前缀
+#      use-key-prefix: false
+      # 是否缓存空值  解决缓存穿透
+      cache-null-values: true
+
+frankmall:
+  thread:
+    core-size: 40
+    max-size: 100
+    keep-alive-time: 10
+
+
+

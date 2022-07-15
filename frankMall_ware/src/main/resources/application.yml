@@ -1,0 +1,43 @@
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    username: guest
+    password: guest
+    # 手动确认消息
+    listener:
+      simple:
+        acknowledge-mode: manual
+  datasource:
+    url: jdbc:mysql://localhost/gulimall_wms
+    username: root
+    password: 11111111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        # server-addr: localhost:8848
+        # 换成nginx的8080端口 做集群
+        server-addr: localhost:8848
+        namespace: f9ce362e-d3de-4d52-aadb-91ece67be28c
+  application:
+    name: frankMall-ware
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+
+
+
+
+server:
+  port: 11000
+logging:
+  level:
+    com.lxc.frankmall.ware: debug
+

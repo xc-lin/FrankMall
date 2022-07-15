@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lxc.frankmall.product.dao.SkuSaleAttrValueDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.lxc.frankmall.product.entity.SkuSaleAttrValueEntity" id="skuSaleAttrValueMap">
+        <result property="id" column="id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="attrId" column="attr_id"/>
+        <result property="attrName" column="attr_name"/>
+        <result property="attrValue" column="attr_value"/>
+        <result property="attrSort" column="attr_sort"/>
+    </resultMap>
+    <!--    <select id="getSaleAttrBySpuId" resultType="com.lxc.frankmall.product.vo.SkuItemSaleAttrVo"></select>-->
+
+    <resultMap id="SkuItemSaleAttrVo" type="com.lxc.frankmall.product.vo.SkuItemSaleAttrVo">
+        <result column="attr_id" property="attrId"></result>
+        <result column="attr_name" property="attrName"></result>
+        <collection property="attrValues" ofType="com.lxc.frankmall.product.vo.AttrValueWithSkuIdVo">
+            <result column="attr_value" property="attrValue"></result>
+            <result column="sku_ids" property="skuIds"></result>
+        </collection>
+    </resultMap>
+    <select id="getSaleAttrBySpuId" resultMap="SkuItemSaleAttrVo">
+        SELECT ssav.attr_id, ssav.attr_name, ssav.attr_value, GROUP_CONCAT(distinct ssav.sku_id) sku_ids
+        from pms_sku_info info
+                 LEFT JOIN pms_sku_sale_attr_value ssav on info.sku_id = ssav.sku_id
+        WHERE info.spu_id = #{spuId}
+        group by ssav.attr_id, ssav.attr_name, ssav.attr_value
+    </select>
+    <select id="getSkuSaleAttrValuesAsStringList" resultType="java.lang.String">
+        select CONCAT(attr_name, ": " + attr_value)
+        from pms_sku_sale_attr_value
+        where sku_id = #{skuId}
+    </select>
+
+</mapper>

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: frankMall-coupon
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: f9ce362e-d3de-4d52-aadb-91ece67be28c
+        shared-configs:
+          - data-id: mybatis.yaml
+            group: common
+            refresh: true
+
+          - data-id: datasource.yaml
+            group: coupon
+            refresh: true
+
+          - data-id: nacos.yaml
+            group: common
+            refresh: true
+
+          - data-id: frankMall-coupon-dev.yaml
+            group: coupon
+            refresh: true
