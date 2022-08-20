@@ -65,7 +65,7 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemDao, OrderItemEnt
          * 业务失败调用basicNack
          *
          */
-        channel.basicNack(deliveryTag,false,false  );
+        channel.basicNack(deliveryTag,false,true  );
     }
 
 
